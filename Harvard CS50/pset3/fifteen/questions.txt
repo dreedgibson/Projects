@@ -1,0 +1,9 @@
+questions.txt
+
+Computer Science 50
+Problem Set 3
+
+0. 3X3 to 9X9
+1. board is represented with an integer array
+2. function greet is called at start
+3. init / draw / move / won.

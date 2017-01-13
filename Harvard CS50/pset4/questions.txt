@@ -1,0 +1,20 @@
+0.  BMP is 32 bit color or over 4B colors, GIF is 8bit color or 256, JPEG and PNG are 24 bit color or 16MM
+1.  A GIF file can be animated the other three cannot.
+2.  lossy compression actually removes some of the data in the file.  
+Lossless is just the opposite it compresses the file in a way that can be undone so that you move back and forth between the two formats without any loss of quality
+3.  JPEG is lossy compression
+4.  FAT = File allocation table, when a file is deleted on this system the data is removed but the file remains on the hard drive
+5.  use a secure delete option 
+6.  The stdint.h allows for the definition of exact size variables.  ie unit8_t is an 8 bit unsigned integer so this can store values from 0 to 255.
+7.  These variables specify exactly how large the int value is in bits.  uint is an unsigned int only positive values are allowed, where int is both positive and negative integers
+8.  in order: 1, 4, 4, 2.
+9.  The first two bytes of a BMP file are BM to signify bitmap.
+10. bfsize is the size of the bitmap, bisize is the ssize required by the structure.
+11. if bisize is negative it indicates a top down DIP with an origin in the upper left corner
+12. bibitcount specifies bits per pixel for color.
+13. The oupput might be null if the computer does not have enough memory to create an ouptut file.
+14. in combination with the sizeof function in the 2nd argument, the fread function reads in the full file (all bytes) 1 time.  The 1 represents the 1 time that the fread function reads the file.
+15. size of RGB triple is 3 so 3 * 3 = 9 % 4 = 1  4 - 1 = 3 % 4 = 3 thus 3 is assigned to padding.
+16. fseek is used ot change the offset of the file pointer.  in this particular code it is used to skip over the padding.
+17. seek cur is used to set the location of the pointer to its current location
+18. Rick Roll!
