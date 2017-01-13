@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ initializeAllScores()
+comment0.text=\r\n\ SetScore\ asks\ user\ to\ enter\ score\ for\ each\ array\ element\r\n
+comment1.params=rowIndex\ colIndex\ numOfCols
+comment1.target=double\ getScoreByIndices(int,\ int,\ int)
+comment2.params=
+comment2.target=void\ printAllScores()
+comment3.params=row
+comment3.target=double\ aveByRow(int)
+comment4.params=col
+comment4.target=double\ aveByCol(int)
+comment5.params=
+comment5.target=double\ aveTwoDArr()
+comment6.params=row
+comment6.target=int\ maxColIndex(int)
+comment7.params=col
+comment7.target=int\ maxRowIndex(int)
+comment8.params=
+comment8.target=int[]\ maxTwoDArrIndex()
+numComments=9

@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=args
+comment0.target=void\ main(java.lang.String[])
+comment1.params=n
+comment1.target=int\ fact(int)
+comment2.params=n
+comment2.target=int\ handshake(int)
+comment3.params=n
+comment3.target=int\ fibonacci(int)
+comment4.params=data\ upperIndex\ lowerIndex\ value
+comment4.target=int\ binSearch(int[],\ int,\ int,\ int)
+comment5.params=data\ upperIndex\ lowerIndex\ value
+comment5.target=int\ binSearchIter(int[],\ int,\ int,\ int)
+comment6.params=num\ from\ to
+comment6.target=void\ towers(int,\ int,\ int)
+comment7.params=num
+comment7.target=void\ demo(int)
+numComments=8
