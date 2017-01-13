@@ -5,20 +5,21 @@ public class Greetings {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[] arr = {3, 5, 7, 9, 11, 22, 27, 35, 42, 55, 65, 75, 95};
-        System.out.println(binSearch(arr, arr.length - 1, 0, 65));
-        System.out.println(binSearchIter(arr, arr.length - 1, 0, 65));
-        Scanner input = new Scanner(System.in);
-        System.out.println("Input Value to compute factorial");
-        long value = input.nextLong();
-        System.out.println(fact(value));
-        System.out.println("Hola, mundo!");
-        towers(20,1,3);
-        input.close();
+		System.out.println(binSearch(arr, arr.length - 1, 0, 65));
+		System.out.println(binSearchIter(arr, arr.length - 1, 0, 65));
+		Scanner input = new Scanner(System.in);
+		System.out.println("Input Value to compute factorial");
+		long value = input.nextLong();
+		System.out.println(fact(value));
+		System.out.println("Hola, mundo!");
+		towers(20,1,3);
+		input.close();
 	}
+	
 	public static long fact(long n) {
-        if (n == 1) return 1;
-        else return n * fact(n - 1);
-    }
+        	if (n == 1) return 1;
+        	else return n * fact(n - 1);
+    	}
     
     public static int handshake(int n) {
         if (n <= 1) {
