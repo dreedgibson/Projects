@@ -1,0 +1,76 @@
+/*
+
+Your styles go here!
+
+Hint! You'll probably want to start by styling:
+  * <body>
+  * <article>
+  * <h1>
+  * <img>
+
+I've left some boilerplate below for you.
+
+*/
+
+body {
+	font-family: sans-serif;
+	max-width: 50em;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: 'Josefin Slab', serif;
+}
+
+article {
+	max-width: 50em;
+}
+
+figcaption {
+	text-shadow: 2px 2px 2px #AAA;
+	text-align: center;
+	font-size: 16px
+	font-weight: bold;
+	color: red;
+}
+
+h1, h2 {
+	text-align: center;
+	font-family: 'Lobster', cursive;
+	color: red;
+}
+
+img {
+	max-width: 100%;
+}
+
+@import url(http://weloveiconfonts.com/api/?family=zocial);
+
+/* zocial */
+[class*="zocial-"]:before {
+  font-family: 'zocial', sans-serif;
+}
+
+#social {
+	display: inline-block;
+	text-shadow: 3px 3px 3px #AAA;
+}
+
+#social a {
+	margin: 10px; 
+}
+
+#logo {
+	max-width: 10%;
+	float: left;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+.header h1 {
+	position: relative;
+	padding: 2% 10px;
+}
+
+@media screen and (max-width: 400px) {
+	#logo {
+		display: none;
+	}
+}

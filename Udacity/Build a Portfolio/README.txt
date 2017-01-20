@@ -1,0 +1,1 @@
+This folder contains all of the courses and mini-projects for the "Build a Portfolio" project from Udacity.
