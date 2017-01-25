@@ -1,0 +1,60 @@
+/* General Colors and Fonts */
+body {
+	font-family: 'Lato', sans-serif;
+	color: #747704;
+	font-weight: 300;
+}
+
+.text-muted {
+	color: #BCBBBB;
+}
+
+.text-thin {
+	font-weight: 100;
+}
+
+.title-super {
+	font-size: 60px;
+}
+
+/* zocial */
+[class*="zocial-"]:before {
+  font-family: 'zocial', sans-serif;
+}
+
+/* ensure height of all projects matches */
+.picture-container {
+	height: 200px;
+	overflow: hidden;
+}
+
+/* logo */
+.title-logo {
+	margin: 10px;
+	min-width: 100px;
+}
+
+.mobile-logo-img {
+	display: none;
+}
+
+/* mobile displays */
+@media screen and (max-width: 767px) {
+	.title-logo {
+		display: none;
+	}
+	.title-text {
+		text-align: center;
+	}
+	.mobile-logo-img {
+		display: inline-block;
+		border-radius: 50%;
+	}
+	.mobile-logo {
+		text-align: center;
+	}
+	.mobile-center img {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}

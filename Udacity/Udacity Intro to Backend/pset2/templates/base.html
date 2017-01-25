@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Udacity Blog Project</title>
+		<link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Lobster" rel="stylesheet">
+		<style type="text/css">
+			body {
+				font-family: 'Josefin Slab', serif;
+				width: 800px;
+				margin: 0 auto;
+				padding: 10px;
+			}
+
+			.error {
+				color: red;
+			}
+
+			label {
+				display: block;
+				font-size: 20px;
+			}
+
+			input[type=text] {
+				width: 400px;
+				font-size: 20px;
+				padding: 2px;
+			}
+
+			textarea {
+				width: 400px;
+				height: 200px;
+				font-size: 17px;
+				font-family: 'Josefin Slab', serif;
+			}
+
+			input[type=submit] {
+				font-size: 24px;
+			}
+
+			hr {
+				margin: 20px auto;
+				height: 5px;
+				background-color: grey;
+			}
+
+			.blog + .blog {
+				margin-top: 20px;
+			}
+
+			.blog-title {
+				font-weight: bold;
+				font-size: 20px;
+				width: 85%;
+				display:inline-block;
+			}
+
+			.blog-date {
+				width: 20%;
+				display: inline;
+			}
+			.blog-body {
+				margin: 0;
+				font-size: 17px;
+			}
+			.row {
+				display: inline;
+			}
+			.header-text {
+				text-align: center;
+				font-family: 'Lobster', cursive;
+			}
+		</style>
+
+	</head>
+	<body>
+		<h1 class="header-text">Udacity Blog Project</h1>
+		<hr>
+		{% block content %}
+		{% endblock %}
+	</body>
+</html>
