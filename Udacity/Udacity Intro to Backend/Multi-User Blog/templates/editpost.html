@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Edit Post</h2>
+
+<form method="post" class="form">
+	<label>
+		<div>subject</div>
+		<input type="text" name="title" value="{{ blog.title }}">
+	</label>
+
+	<label>
+		<div>post</div>
+		<textarea name="blog">{{ blog.blog }}</textarea>
+	</label>
+	<div class="error">{{ error }}</div>
+	<input type="hidden" name="blog_id" value="{{blog.key().id()}}">
+	<section class="row">
+		<input type="submit">
+	</section>
+</form>
+<button id="cancel_edit">Cancel Edit</button>
+<button id="delete_post">Delete</button>
+<script type="text/javascript">
+    document.getElementById("cancel_edit").onclick = function () {
+        location.href = "https://ambient-union-156221.appspot.com/{{blog.key().id()}}";
+    };
+    document.getElementById("delete_post").onclick = function () {
+        location.href = "https://ambient-union-156221.appspot.com/deleteblogpost/{{blog.key().id()}}";
+    };
+</script>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<h2>Welcome, {{username}}!!</h2>
+	<h3>Do you want to?</h3>
+
+	<table>
+      <tr>
+        <td>
+          <button id="newPost" class="welcome_button">Create a New Post?</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <button id="homePage" class="welcome_button">Go to the Home Page?</button>
+        </td>
+      </tr>
+    </table>
+{% endblock %}
