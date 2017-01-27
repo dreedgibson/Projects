@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if loginStatus == 0 %}
+<h2>Edit Your Comment</h2>
+<form method="post" class="form">
+	<section class="row">
+		<label class="comment-username-label">
+			{{username}}
+		</label>
+		<label class="comment-body-label">
+			<textarea name="Comment" class="new-comment-body">{{ comment.comment_field }}</textarea>
+		</label>
+	</section>
+	<section class="row">
+		<article class="right-align-buttons">
+			<input type="submit" value="Post">
+		</article>
+	</section>
+</form>
+<p class="error">{{error}}</p>
+{% endif %}
+{% endblock %}

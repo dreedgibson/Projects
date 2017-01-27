@@ -43,6 +43,9 @@
 			<form method="post" action="/deletecomment/{{comment.key().id()}}" class="comment-form form">
 				<input type="submit" value="delete">
 			</form>
+			<form action="/editcomment/{{comment.key().id()}}" class="comment-form form">
+				<input type="submit" value="Edit">
+			</form>
 		{% endif %}
 	</section>
 {% endfor %}
