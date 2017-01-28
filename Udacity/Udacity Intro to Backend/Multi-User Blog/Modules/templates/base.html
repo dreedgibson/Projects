@@ -30,7 +30,7 @@
       			width: 150px;
       			height: 30px;
       			font-family: 'Josefin Slab', serif;
-      			margin: auto 0;
+      			margin: auto 5px;
       		}
 
       		.top-rule {
@@ -70,6 +70,13 @@
 			}
 
 			.blog-title {
+				font-weight: bold;
+				font-size: 20px;
+				width: 60%;
+				display:inline-block;
+			}
+
+			.blog-title-main {
 				font-weight: bold;
 				font-size: 20px;
 				width: 80%;
@@ -137,20 +144,32 @@
       		.comment-form {
       			margin: 0 10px;
       		}
+
+      		.newUser {
+      			text-align: justify;
+      			margin: auto 5px;
+      		}
+      		.likes {
+      			width: 20%;
+      			margin: 0;
+      		}
 		</style>
 
 	</head>
 	<body>
 		{% if loginStatus == 0 %}
-			<div class="row">
+			<section class="row">
 				<h1 class="header-text"><a class="anchor" href="/">Udacity Blog Project</a></h1>
 				<button id="logout" class="welcome_button">Logout?</button>
-			</div>
+				<button id="newpost_base" class="welcome_button">Create Post</button>
+			</section>
 			<hr class="top-rule">
 		{% else %}
-			<h1 class="header-text"><a href="/">Udacity Blog Project</a></h1>
-			<button id="login" class="welcome_button">Login</button>
-			<span class="newUser">New User? Register <a href="/signup">here</a></span>
+			<section class="row">
+				<h1 class="header-text"><a href="/">Udacity Blog Project</a></h1>
+				<button id="login" class="welcome_button">Login</button>
+				<span class="newUser">New User? Register <a href="/signup">here</a></span>
+			</section>
 			<hr class="top-rule">
 		{% endif %}
 		<!-- template where the content of each page will go -->
@@ -168,6 +187,9 @@
 			<script type="text/javascript">
 			    document.getElementById("logout").onclick = function () {
 			        location.href = "https://ambient-union-156221.appspot.com/logout";
+			    };
+			    document.getElementById("newpost_base").onclick = function () {
+			        location.href = "https://ambient-union-156221.appspot.com/newpost";
 			    };
 			    document.getElementById("newPost").onclick = function () {
 			        location.href = "https://ambient-union-156221.appspot.com/newpost";

@@ -2,18 +2,10 @@
 
 {% block content %}
 
-{% set count = 1 %}
-
 {% for blog in blogs %}
 	<div class="blog">
 		<section class="row">
-			<div class="blog-title"><a class="anchor" href="/{{blog.key().id()}}">{{ blog.title }}</a></div>
-				<!-- Credit to LikeBtn.com for help with the design of the Like Button. LikeBtn.com BEGIN -->
-			{% if blog.createdby != current_user %}
-				<span class="likebtn-wrapper" data-theme="lightgray" data-white_label="true" data-rich_snippet="true" data-identifier="item_{{count}}" data-popup_disabled="true"></span>
-				<!-- LikeBtn.com END -->
-			{% endif %}
-			{% set count = count + 1 %}
+			<div class="blog-title-main"><a class="anchor" href="/{{blog.key().id()}}">{{ blog.title }}</a></div>
 			<div class="blog-date">{{blog.created.strftime("%b %d, %Y")}}</div>
 		</section>
 		<section class="row">
@@ -31,11 +23,4 @@
 		<section class="blog-body">{{ blog.blog }}</section>
 	</div>
 {% endfor %}
-<script>
-(function(d,e,s) {
-	if(d.getElementById("likebtn_wjs"))return;
-		a=d.createElement(e);
-		m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";
-		a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");
-</script>
 {% endblock %}

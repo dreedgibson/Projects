@@ -8,6 +8,7 @@ class EditComment(Handler):
 		# make sure user is signed in
 		if self.loginStatus() == 1:
 			self.redirect("/login")
+			return
 		
 		key = db.Key.from_path('Comments', int(comment_id))
 		comment = db.get(key)
@@ -15,10 +16,12 @@ class EditComment(Handler):
 		# make sure the comment exists
 		if self.validComment(comment):
 			self.redirect("/")
+			return
 
 		# ensure that user owns the comment
 		if not self.userOwnsComment(comment):
 			self.redirect("/")
+			return
 
 		# if reached by get populate the form with the post properties
 		self.render('editcomment.html', comment = comment, loginStatus = self.loginStatus(), username=self.getUsername(), error="")
@@ -27,6 +30,7 @@ class EditComment(Handler):
 		# make sure user is signed in
 		if self.loginStatus() == 1:
 			self.redirect("/login")
+			return
 
 		comment_field = self.request.get("Comment")
 
@@ -36,10 +40,12 @@ class EditComment(Handler):
 		# make sure the comment exists
 		if self.validComment(comment_to_update):
 			self.redirect("/")
+			return
 
 		# ensure that user owns comment
 		if not self.userOwnsComment(comment_to_update):
 			self.redirect("/")
+			return
 
 		# update the blog post and redirect back to the permalink page
 		if comment_field:
@@ -47,6 +53,7 @@ class EditComment(Handler):
 			comment_to_update.put()
 
 			self.redirect("/" + str(comment_to_update.blog_id))
+			return
 		else:
 			error = "You need to include a comment field"
 			self.render('editcomment.html', comment = comment, loginStatus = self.loginStatus(), username=self.getUsername(), error=error)

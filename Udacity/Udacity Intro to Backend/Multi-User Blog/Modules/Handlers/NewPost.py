@@ -8,9 +8,13 @@ class NewBlogPage(Handler):
 	def get(self):
 		if self.loginStatus() == 1:
 			self.redirect("/login")  # must be logged in to post, if not redirected
+			return
 		self.render("NewPost.html", title="", blog="", error="", loginStatus=self.loginStatus())
 
 	def post(self):
+		if self.loginStatus() == 1:
+			self.redirect("/login")  # must be logged in to post, if not redirected
+			return
 		title = self.request.get("title")
 		blog = self.request.get("blog")
 

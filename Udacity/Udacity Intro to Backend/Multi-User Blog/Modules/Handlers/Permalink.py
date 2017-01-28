@@ -9,11 +9,16 @@ class PostedBlog(Handler):
 		key = db.Key.from_path('Blog', int(blog_id))
 		blog = db.get(key)
 
+		Likes = db.GqlQuery("SELECT * FROM Likes WHERE blog_id = '%s'" %str(blog.key().id()))
+		numLikes = Likes.count()
+		
 		if self.validPost(blog):
 			self.redirect("/")
+			return
 
 		comments = db.GqlQuery("SELECT * FROM Comments WHERE blog_id = '%s'" %str(blog.key().id()))
-		self.render("permalink.html", blog=blog, username = self.getUsername(), loginStatus=self.loginStatus(), comments = comments, error = "")
+		self.render("permalink.html", blog=blog, username = self.getUsername(), loginStatus=self.loginStatus(), 
+									  comments = comments, error = "", like_error="", numlikes = numLikes)
 
 	def post(self, blog_id):
 		key = db.Key.from_path('Blog', int(blog_id))
@@ -21,7 +26,11 @@ class PostedBlog(Handler):
 
 		if self.validPost(blog):
 			self.redirect("/")
+			return
 			
+		Likes = db.GqlQuery("SELECT * FROM Likes WHERE blog_id = '%s'" %str(blog.key().id()))
+		numLikes = Likes.count()
+
 		# retrieve the comment from the form
 		comment = self.request.get("Comment")
 
@@ -32,4 +41,5 @@ class PostedBlog(Handler):
 		else:
 			error = "You must enter a comment"
 			comments = db.GqlQuery("SELECT * FROM Comments WHERE blog_id = '%s'" %str(blog.key().id()))
-			self.render("permalink.html", blog=blog, username = self.getUsername(), loginStatus=self.loginStatus(), comments = comments, error = error)
+			self.render("permalink.html", blog=blog, username = self.getUsername(), loginStatus=self.loginStatus(), 
+										  comments = comments, error = error, like_error="", numlikes = numLikes)

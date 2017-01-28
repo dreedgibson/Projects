@@ -4,12 +4,26 @@
 
 <section class="row">
 	<div class="blog-title">{{ blog.title }}</div>
+	{% if numlikes > 1 %}
+	<p class="likes">{{numlikes}} people like this post!</p>
+	{% elif numlikes == 1 %}
+	<p class="likes">1 person likes this post!</p>
+	{% endif %}
 	<div class="blog-date">{{blog.created.strftime("%b %d, %Y")}}</div>
 </section>
 <hr>
 <section class="blog-body">{{ blog.blog }}</section>
 
 {% if loginStatus == 0 %}
+<section class="row">
+	<p class="error">{{like_error}}</p>
+	<section class="right-align-buttons">
+		<form method="post" action="/likepost/{{blog.key().id()}}" class="form like-form">
+			<input type="submit" value="Like This Post">
+		</form>
+	</section>
+</section>
+
 <h2>Post a Comment</h2>
 <form method="post" class="form">
 	<section class="row">
