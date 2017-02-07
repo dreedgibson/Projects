@@ -4,6 +4,8 @@ This repository contains source code for the following courses taken through EDx
 -UBC SPD: Systematic Program Design I II and III.
 -Microsoft: JavaScript HTML and CSS Web Development
 -HKUST comp102x: Introduction to Java Programming Parts I and II
+-An android application used to calculate the wall thickness of a pipeline according to DNV RP F105
+-The Udacity Full Stack Web Developer nanodegree
 
 Systematic Program Design was removed because Racket does not translate well to github.
 
