@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Black+Ops+One|Oswald" rel="stylesheet">
+		<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+		<link rel=stylesheet href="{{ url_for('static', filename='styles.css') }}">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  		<script src="//apis.google.com/js/platform.js?onload=start"> </script>
+	</head>
+	<body>
+		<main class="container">
+			{% block content %}
+			{% endblock %}
+		</main>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row divider blue">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner main">
+		<div class="col-md-6 padding-none">
+			<h1>Fantasy Sports</h1>
+		</div>
+	</div>
+
+<section class="flash">
+{% with messages = get_flashed_messages() %}
+      {% if messages %} 
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+</section>
+{% for team in teams %}
+		{% if loop.index % 3 == 0%}
+			<section class="row">
+		{%endif%}
+		<article class="col-md-4 text-center team-list">
+			<a href = "{{url_for('showRoster', team_id = team.id)}}">
+				<img class="img-responsive max-height center-block" src="{{team.logo}}">
+			</a>
+			<h3>{{team.name}}</h3> 
+			<div class="padding-bottom"></div>
+		</article>
+		{% if loop.index % 3 == 0%}
+			</section>
+		{%endif%}
+	{% endfor %}
+	</section>
+{% endblock %}

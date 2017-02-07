@@ -1,0 +1,45 @@
+html { 
+  background: url(http://colorado.rockies.mlb.com/col/images/fan_forum/y2012/wallpapers/colorado-lg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+	background: transparent;
+	font-family: 'Oswald', sans-serif;
+	/*font-family: 'Black Ops One', cursive;*/
+	color: #FFF;
+}
+
+.max-height {
+	max-height: 350px;
+}
+
+.padding-top {
+	padding-top: 10px;
+}
+
+.padding-bottom {
+	padding-bottom: 10px;
+}
+
+.margin-top-button {
+	margin-top: 25px;
+}
+
+.well {
+	background-color: rgba(245, 245, 245, 0.7);
+	max-width: 500px;
+	color: #000080;
+	font-weight: bold;
+	font-size: 18px;
+	border-radius: 10px;
+	padding: 5px;
+	margin: 10px 30px;
+}
+
+.vert-align {
+	vertical-align: middle !important;
+}

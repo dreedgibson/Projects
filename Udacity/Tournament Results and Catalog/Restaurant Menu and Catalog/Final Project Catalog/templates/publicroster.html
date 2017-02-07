@@ -1,0 +1,66 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row divider blue">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner main">
+		<div class="col-md-6 padding-none">
+			<h1>Fantasy Sports</h1>
+		</div>
+		<div class="col-md-6 padding-none text-right">
+			<h1>{{team.name}}</h1>
+		</div>
+	</div>
+
+<section class="flash">
+{% with messages = get_flashed_messages() %}
+      {% if messages %} 
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+</section>
+
+
+{% for p in batters%}
+{% if loop.index % 2 == 0%}
+	<section class="row">
+{%endif%}
+	<section class="col-md-6">
+		<section class="well center-block">
+			<table class="table">
+			  <tr>
+			    <td rowspan="2" class="text-center vert-align">{{p.name}}</td>
+			    <td class="text-right">Batting Average: {{p.batting_average}}</td>
+			  </tr>
+			  <tr>
+			    <td class="text-right">Homeruns: {{p.HR}}</td>
+			  </tr>
+			  <tr>
+			  	<td class="text-center">Position: {{p.pos}}</td>
+			    <td class="text-right">Stolen Bases:{{p.SB}}</td>
+			  </tr>
+			</table>
+		</section>
+		<section class="text-center">
+			<a href="{{url_for('editBatter', team_id = team.id, batter_id = p.id)}}">
+				<button class="btn btn-default">
+					Edit Player
+				</button>
+			</a>
+			<a href="{{url_for('deleteBatter', team_id = team.id, batter_id = p.id)}}">
+				<button class="btn btn-default">
+					Delete Player
+				</button>
+			</a>
+		</section>
+	</section>
+{%if loop.index % 2 == 0%}
+	</section>
+{%endif%}
+{%endfor%}
+{% endblock %}

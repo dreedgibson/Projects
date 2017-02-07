@@ -1,0 +1,57 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<section class="row">
+	<h1>Add a new Batter</h1>
+</section>
+
+<section class="row">
+		<article class="col-md-6 col-md-offset-1 padding-top">
+			<form action="#" method = "post">
+				<section class="form-group row">
+					<label for="name">Name:</label>	
+					<input type ="text" class="form-control" maxlength="100" name="name" value="{{batter.name}}">
+					<article class="padding-bottom"></article>
+				</section>
+				<section class="form-group row">
+					<label for="BA">Batting Average</label>	
+					<input type ="text" class="form-control" maxlength="4" name="BA" placeholder=".300" value="{{batter.batting_average}}">
+					<article class="padding-bottom"></article>
+				</section>
+				<section class="form-group row">
+					<label for="HR">Homeruns</label>	
+					<input type ="number" class="form-control" name="HR" value="{{batter.HR}}">
+					<article class="padding-bottom"></article>
+				</section>
+				<section class="form-group row">
+					<label for="SB">Stolen Bases</label>	
+					<input type ="number" class="form-control" name="SB" value="{{batter.SB}}">
+					<article class="padding-bottom"></article>
+				</section>
+				<section class="form-group row">
+					<label for="pos">Position</label>	
+					<select class="form-control" name="pos" value="{{batter.pos}}">
+				      <option>P</option>
+				      <option>C</option>
+				      <option>1B</option>
+				      <option>2B</option>
+				      <option>3B</option>
+				      <option>SS</option>
+				      <option>RF</option>
+				      <option>CF</option>
+				      <option>LF</option>
+				    </select>
+					<article class="padding-bottom"></article>
+				</section>
+				<button type="submit" class="btn btn-default" id="submit" type="submit">
+				<span aria-hidden="true"></span>Edit</button>
+			</form>
+			<a href="{{url_for('showTeams')}}">
+				<button class="margin-top-button btn btn-default">
+					<span aria-hidden="true"></span>Cancel
+				</button>
+			</a>	
+		</article>	
+	</section>
+{% endblock %}

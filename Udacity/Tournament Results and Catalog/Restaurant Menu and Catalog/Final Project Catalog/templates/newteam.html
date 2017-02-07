@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<section class="row">
+	<h1>Add a new Team</h1>
+</section>
+
+<section class="row">
+		<article class="col-md-6 col-md-offset-1 padding-top">
+			<form action="#" method = "post">
+				<section class="form-group">
+					<label for="name">Name:</label>	
+					<input type ="text" class="form-control" maxlength="100" name="name">
+					<article class="padding-bottom"></article>
+				</section>
+				<section class="form-group">
+					<label for="logo">Logo (url):</label>	
+					<input type ="url" class="form-control" maxlength="100" name="logo">
+					<article class="padding-bottom"></article>
+				</section>
+				<button type="submit" class="btn btn-default" id="submit" type="submit">
+				<span aria-hidden="true"></span>Create</button>
+				</section>
+			</form>		
+		</article>	
+	</section>
+{% endblock %}
