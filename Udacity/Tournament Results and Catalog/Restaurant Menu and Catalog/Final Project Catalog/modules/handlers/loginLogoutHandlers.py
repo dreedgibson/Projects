@@ -38,10 +38,10 @@ def gconnectHandler(session):
         response = make_response(json.dumps('Failed to upgrade the authorization code'), 401)
         response.headers['Content-Type'] = 'application/json'
         return response
-    access_token = credentials. access_token
+    access_token = credentials.access_token
     url = ('https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=%s' %access_token)
     h = httplib2.Http()
-    result = json.loads(h.request(url, 'GET')[1])
+    result = json.loads(h.request(url, 'GET')[1].decode("utf8"))
 
     if result.get('error') is not None:
         response = make_response(json.dumps(result.get('error')), 500)
@@ -65,7 +65,7 @@ def gconnectHandler(session):
         response.headers['Content-Type'] = 'application/json'
 
     login_session['provider'] = 'google'
-    login_session['credentials'] = credentials
+    login_session['credentials'] = credentials.access_token
     login_session['gplus_id'] = gplus_id
 
     userinfo_url = "https://www.googleapis.com/oauth2/v1/userinfo"
@@ -101,7 +101,7 @@ def gdisconnectHandler():
         response.headers['Content-Type'] = 'application/json'
         return response
 
-    access_token = credentials.access_token
+    access_token = credentials
 
     url = 'https://accounts.google.com/o/oauth2/revoke?token=%s' % access_token
     h = httplib2.Http()

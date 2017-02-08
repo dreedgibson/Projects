@@ -1,5 +1,5 @@
 from flask import jsonify
-from ..setup.catalog_setup import Base, Team, Batter, User
+from ..setup.catalog_setup import Base, Team, Batter
 
 
 # JSON APIs to view team and player info

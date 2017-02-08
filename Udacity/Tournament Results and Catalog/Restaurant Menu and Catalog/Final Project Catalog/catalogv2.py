@@ -19,7 +19,8 @@ from modules.handlers.editDelTeamPlayer import (editTeamHandler,
                                                 editBatterHandler,
                                                 deleteBatterHandler,
                                                 newTeamHandler,
-                                                newPlayerHandler)
+                                                newPlayerHandler,
+                                                login_required)
 
 app = Flask(__name__)
 
@@ -90,18 +91,21 @@ def showTeams():
 
 # Create a new sport entry
 @app.route('/teams/new/', methods=['GET', 'POST'])
+@login_required
 def newTeam():
     return newTeamHandler(session)
 
 
 # Edit a Team
 @app.route('/teams/<int:team_id>/edit/', methods=['GET', 'POST'])
+@login_required
 def editTeam(team_id):
     return editTeamHandler(team_id, session)
 
 
 # Delete a team
 @app.route('/teams/<int:team_id>/delete/', methods=['GET', 'POST'])
+@login_required
 def deleteTeam(team_id):
     return deleteTeamHandler(team_id, session)
 
@@ -115,6 +119,7 @@ def showRoster(team_id):
 
 # Create a new batter
 @app.route('/teams/<int:team_id>/roster/new/', methods=['GET', 'POST'])
+@login_required
 def newPlayer(team_id):
     return newPlayerHandler(team_id, session)
 
@@ -122,6 +127,7 @@ def newPlayer(team_id):
 # Edit a batter's stats
 @app.route('/teams/<int:team_id>/roster/<int:batter_id>/edit/',
            methods=['GET', 'POST'])
+@login_required
 def editBatter(team_id, batter_id):
     return editBatterHandler(team_id, batter_id, session)
 
@@ -129,6 +135,7 @@ def editBatter(team_id, batter_id):
 # Delete a batter
 @app.route('/teams/<int:team_id>/roster/<int:batter_id>/delete/',
            methods=['GET', 'POST'])
+@login_required
 def deleteBatter(team_id, batter_id):
     return deleteBatterHandler(team_id, batter_id, session)
 

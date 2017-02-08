@@ -2,19 +2,25 @@ from flask import Flask, render_template, flash, request, redirect, url_for
 from flask import session as login_session
 from ..functions.userfunctions import getUserInfo
 from ..setup.catalog_setup import Base, Team, Batter, User
+from functools import wraps
 
+# check if user is logged in
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'username' not in login_session:
+            return redirect('/login')
+        return f(*args, **kwargs)
+    return decorated_function
 
 # Edit a Team
 def editTeamHandler(team_id, session):
-    # ensure someone is logged in prior for editing priveleges
-    if 'username' not in login_session:
-        return redirect('/login')
     # get correct team from database
     teamToEdit = session.query(Team).filter_by(id=team_id).one()
     # ensure user is authorized to edit team
     if teamToEdit.user_id != login_session['user_id']:
-        return ("<script>function myFunction() {alert('Not authorized" +
-        " to edit this team.');}</script><body onload='myFunction()'>")
+        flash("not authorized to edit this team")
+        return redirect('/teams')
     # save edits to database
     if request.method == 'POST':
         if request.form['name']:
@@ -29,15 +35,12 @@ def editTeamHandler(team_id, session):
 
 # Delete a team
 def deleteTeamHandler(team_id, session):
-    # ensure someone is logged to allow deleting priveleges
-    if 'username' not in login_session:
-        return redirect('/login')
     # query database for team to delete
     teamToDelete = session.query(Team).filter_by(id=team_id).one()
     # ensure user is authorized to delete team
     if teamToDelete.user_id != login_session['user_id']:
-        return ("<script>function myFunction() {alert('Not authorized" +
-        "to delete this team.');}</script><body onload='myFunction()'>")
+        flash("not authorized to delete this team")
+        return redirect('/teams')
     # delete team and save database
     if request.method == 'POST':
         session.delete(teamToDelete)
@@ -50,16 +53,13 @@ def deleteTeamHandler(team_id, session):
 
 # edit a batter
 def editBatterHandler(team_id, batter_id, session):
-    # ensure someone is logged in prior to allowing editing priveleges
-    if 'username' not in login_session:
-        return redirect('/login')
     # query database for team and batter to edit
     batterToEdit = session.query(Batter).filter_by(id=batter_id).one()
     team = session.query(Team).filter_by(id=team_id).one()
     # ensure user is authorized to edit batter
     if team.user_id != login_session['user_id']:
-        return ("<script>function myFunction() {alert('Not authorized" +
-        " to edit this batter.');}</script><body onload='myFunction()'>")
+        flash("not authorized to edit this batter")
+        return redirect('/teams')
     # edit batter and commit to databases
     if request.method == 'POST':
         if request.form['name']:
@@ -83,16 +83,13 @@ def editBatterHandler(team_id, batter_id, session):
 
 # delete a batter
 def deleteBatterHandler(team_id, batter_id, session):
-    # ensure a user is logged in
-    if 'username' not in login_session:
-        return redirect('/login')
     # query database for batter to delete
     batterToDelete = session.query(Batter).filter_by(id=batter_id).one()
     team = session.query(Team).filter_by(id=team_id).one()
     # ensure user has authorization
     if batterToDelete.user_id != login_session['user_id']:
-        return ("<script>function myFunction() {alert('Not authorized" +
-        " to delete this player.');}</script><body onload='myFunction()'>")
+        flash("not authorized to delete this batter")
+        return redirect('/teams')
     # delete batter and commit changes
     if request.method == 'POST':
         session.delete(batterToDelete)
@@ -105,15 +102,12 @@ def deleteBatterHandler(team_id, batter_id, session):
 
 # new player
 def newPlayerHandler(team_id, session):
-    # ensure user is logged in 
-    if 'username' not in login_session:
-        return redirect('/login')
     # query database for team
     team = session.query(Team).filter_by(id=team_id).one()
     # ensure user is authorized to add players
     if team.user_id != login_session['user_id']:
-        return ("<script>function myFunction() {alert('Not authorized" +
-        " to add players to roster.');}</script><body onload='myFunction()'>")
+        flash("not authorized to add players to this roster")
+        return redirect('/teams')
     # create new batter and commit to database
     if request.method == 'POST':
         newBatter = Batter(name=request.form['name'],
@@ -133,8 +127,6 @@ def newPlayerHandler(team_id, session):
 
 # new team
 def newTeamHandler(session):
-    if 'username' not in login_session:
-        return redirect('/login')
     if request.method == 'POST':
         newTeam = Team(name=request.form['name'],
                        logo=request.form['logo'],
