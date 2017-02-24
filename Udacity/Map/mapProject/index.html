@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Udacity Map Project</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main id="map-container">
+	<aside id="sidebar" data-bind="style: {width: sidebarWidth}">
+		<!--Input to filter the list of locations-->
+		<h3>Local Bars in Denver, CO</h3>
+		<input type="text" data-bind="textInput: filterValue" placeholder="Filter">
+		<article data-bind="ifnot: filteredLocations">
+			<!--If the filtered locations array exists use that array ifnot use the original array-->
+			<ul data-bind="foreach: locationsList">
+				<li data-bind="text: name, click: $parent.listClickHandler"></li>
+				<hr>
+			</ul>
+		</article>
+		<article data-bind="if: filteredLocations">
+			<ul data-bind="foreach: filteredLocations">
+				<li data-bind="text: name, click: $parent.listClickHandler"></li>
+				<hr>
+			</ul>
+		</article>
+	</aside>
+	<!--Icon made by Taras Shypka from www.flaticon.com-->
+	<section class="hamIcon" data-bind="style: {marginLeft: hamMargin}">
+	<span data-bind="click: toggleSidebar"><img src="img/menu.png"></span>
+	</section>
+	<section id="map"></section>
+</main>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/knockout/dist/knockout.js"></script>
+	<script src="js/model/mapModel.js"></script>
+	<script src="js/viewmodel/mapViewModel.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtmrlqBPRI7wH7LZ1AmHHL2SGn369K28U&callback=initMap"  async defer onerror="googleError()">
+	</script>
+</body>
+</html>
